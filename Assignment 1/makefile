@@ -1,6 +1,15 @@
 CXX=g++
-LDFLAGS=-framework OpenGL -framework GLUT
-CFLAGS=-D GL_SILENCE_DEPRECATION --std=c++11
+
+OS := $(shell uname)
+ifeq ($(OS),Darwin)
+  # Run MacOS commands
+  LDFLAGS=-framework OpenGL -framework GLUT
+  CFLAGS=-D GL_SILENCE_DEPRECATION --std=c++11
+else
+  LDFLAGS=-lGL -lGLU -lglut
+  CFLAGS=--std=c++11
+endif
+
 SRCS=main.cpp
 
 out: $(SRCS)
