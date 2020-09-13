@@ -13,7 +13,7 @@ endif
 SRCS=main.cpp
 
 out: $(SRCS)
-	$(CXX) $(LDFLAGS) $(CFLAGS) -o $@ $<
+	$(CXX) $(CFLAGS) -o $@ $< $(LDFLAGS)
 
 clean:
 	rm -rf out
